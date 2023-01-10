@@ -1,1 +1,3 @@
-console.log('the project has started');
+import { API } from "./api";
+
+API();
