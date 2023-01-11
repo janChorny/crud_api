@@ -3,8 +3,8 @@ export interface User {
   username: string;
   age: number;
   hobbies: string[];
-}
+};
 
 export interface Users {
   users: User[];
-}
+};
