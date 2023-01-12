@@ -1,10 +1,24 @@
 import { createServer } from 'http';
-import { PORT } from './constants/constants';
-import { createUser, getUsers } from './controller/controller';
+import { PORT, USERS_ENDPOINT } from './constants/constants';
+import { createUser, deleteUserById, findUserById, getUsers } from './controller/controller';
 
 export const API = () => {
   const server = createServer(async (req, res) => {
+    let id = req.url?.split('/')[3];
+    if (id){
+      switch (req.method) {
+        case 'GET':
+          await findUserById(req, res, id);
+          break;
 
+        case 'DELETE':
+          await deleteUserById(req, res, id);
+          break;
+      
+        default:
+          break;
+      }
+    } else if (req.url === USERS_ENDPOINT) {
       switch (req.method) {
         case 'GET':
           await getUsers(req, res);
@@ -17,7 +31,7 @@ export const API = () => {
         default:
           break;
       }
-    
+    }
   });
 
   server.listen(PORT, 'localhost', () => {

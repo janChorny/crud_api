@@ -44,3 +44,17 @@ export const createNewUser = (user: User) => {
     res(addedUser);
   });
 }
+
+export const getUser = (id: string) => {
+  return new Promise<User | undefined>((res) => {
+    const userToFind = users.filter(el => el.id === id)[0];
+    res(userToFind);
+  });
+}
+
+export const deleteUser = (id: string) => {
+  return new Promise<void>((res) => {
+    users = users.filter(el => el.id !== id);
+    res();
+  });
+}
