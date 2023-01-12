@@ -1,6 +1,6 @@
 import { createServer } from 'http';
 import { PORT, USERS_ENDPOINT } from './constants/constants';
-import { createUser, deleteUserById, findUserById, getUsers } from './controller/controller';
+import { createUser, deleteUserById, findUserById, getUsers, updateUserById } from './controller/controller';
 
 export const API = () => {
   const server = createServer(async (req, res) => {
@@ -13,6 +13,10 @@ export const API = () => {
 
         case 'DELETE':
           await deleteUserById(req, res, id);
+          break;
+
+        case 'PUT':
+          await updateUserById(req, res, id);
           break;
       
         default:

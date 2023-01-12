@@ -27,7 +27,7 @@ export const getRequestBody = (req: IncomingMessage) => {
       rej(error);
     }
   });
-}
+};
 
 let { users } = storage;
 
@@ -43,18 +43,26 @@ export const createNewUser = (user: User) => {
     users.push(addedUser);
     res(addedUser);
   });
-}
+};
 
 export const getUser = (id: string) => {
   return new Promise<User | undefined>((res) => {
     const userToFind = users.filter(el => el.id === id)[0];
     res(userToFind);
   });
-}
+};
 
 export const deleteUser = (id: string) => {
   return new Promise<void>((res) => {
     users = users.filter(el => el.id !== id);
     res();
   });
-}
+};
+
+export const updateUser = (id: string, userInfo: User) => {
+  return new Promise<User>((res) => {
+    const userIndex= users.findIndex(el => el.id === id);
+    users[userIndex] = { id, ...userInfo };
+    res(users[userIndex]);
+  });
+};
