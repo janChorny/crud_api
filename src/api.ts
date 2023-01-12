@@ -1,6 +1,6 @@
 import { createServer } from 'http';
 import { PORT } from './constants/constants';
-import { getUsers } from './controller/controller';
+import { createUser, getUsers } from './controller/controller';
 
 export const API = () => {
   const server = createServer(async (req, res) => {
@@ -8,6 +8,10 @@ export const API = () => {
       switch (req.method) {
         case 'GET':
           await getUsers(req, res);
+          break;
+
+        case 'POST':
+          await createUser(req, res);
           break;
 
         default:
