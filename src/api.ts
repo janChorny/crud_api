@@ -37,6 +37,8 @@ export const API = () => {
           default:
             break;
         }
+      } else {
+        showData(res, 400, showMessageWithStatus(StatusCodeMessage.wrongWay))
       }
     } catch (error) {
       showData(res, 500, showMessageWithStatus(StatusCodeMessage.errorOnServerSide))

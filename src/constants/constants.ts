@@ -9,7 +9,8 @@ export enum StatusCodeText {
   USER_ID_INVALID = 'User ID is invalid (not uuid).',
   USER_DOESNOT_EXIST = `User with such ID does't exist.`,
   NO_REQUIRED_FIELDS = 'Not all the required fields are filled.',
-  SERVER_ERROR = 'Server error. Try again.'
+  SERVER_ERROR = 'Server error. Try again.',
+  WRONG_WAY = `Wrong request. Use like 'http://localhost:4000/api/users/{userID}'`
 }
 
 export const storage: Users = {
@@ -21,6 +22,7 @@ export enum StatusCodeMessage {
   noSuchUser,
   noRequiredFields,
   errorOnServerSide,
+  wrongWay,
 }
 
 export const showMessageWithStatus = (status: StatusCodeMessage): StatusCodeMessageSpec => {
@@ -33,6 +35,8 @@ export const showMessageWithStatus = (status: StatusCodeMessage): StatusCodeMess
       return { statusCode: 400, message: StatusCodeText.NO_REQUIRED_FIELDS };
     case StatusCodeMessage.errorOnServerSide:
       return { statusCode: 500, message: StatusCodeText.SERVER_ERROR };
+    case StatusCodeMessage.wrongWay:
+      return { statusCode: 400, message: StatusCodeText.WRONG_WAY };
   }
 }
 
