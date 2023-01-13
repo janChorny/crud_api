@@ -1,6 +1,6 @@
 import { createNewUser, deleteUser, getAllUsers, getRequestBody, getUser, showData, updateUser } from "../services/services";
 import { IncomingMessage, ServerResponse } from 'http';
-import { showMessageWithStatus, StatusCode, StatusMessage } from "../constants/constants";
+import { showMessageWithStatus, StatusMessage } from "../constants/constants";
 import { validate } from "uuid";
 
 export const getUsers = async (req: IncomingMessage, res: ServerResponse) => {

@@ -1,8 +1,9 @@
 import { Users } from "../interfaces/interfaces";
+import 'dotenv/config';
 
 export const USERS_ENDPOINT = '/api/users';
 
-export const PORT = 4000;
+export const PORT = Number(process.env.PORT) || 4000;
 
 export enum StatusCode {
   USER_ID_INVALID = 'User ID is invalid (not uuid).',
