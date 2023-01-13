@@ -20,6 +20,7 @@ export enum StatusCodeMessage {
   wrongId,
   noSuchUser,
   noRequiredFields,
+  errorOnServerSide,
 }
 
 export const showMessageWithStatus = (status: StatusCodeMessage): StatusCodeMessageSpec => {
@@ -30,6 +31,8 @@ export const showMessageWithStatus = (status: StatusCodeMessage): StatusCodeMess
       return { statusCode: 404, message: StatusCodeText.USER_DOESNOT_EXIST };
     case StatusCodeMessage.noRequiredFields:
       return { statusCode: 400, message: StatusCodeText.NO_REQUIRED_FIELDS };
+    case StatusCodeMessage.errorOnServerSide:
+      return { statusCode: 500, message: StatusCodeText.SERVER_ERROR };
   }
 }
 
