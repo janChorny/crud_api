@@ -1,6 +1,6 @@
 import { createNewUser, deleteUser, getAllUsers, getRequestBody, getUser, showData, updateUser } from "../services/services";
 import { IncomingMessage, ServerResponse } from 'http';
-import { StatusCode } from "../constants/constants";
+import { showMessageWithStatus, StatusCode, StatusMessage } from "../constants/constants";
 import { validate } from "uuid";
 
 export const getUsers = async (req: IncomingMessage, res: ServerResponse) => {
@@ -13,7 +13,7 @@ export const createUser = async (req: IncomingMessage, res: ServerResponse) => {
   const requestBodyToObject = JSON.parse(requestBody);
   const { username, age, hobbies } = requestBodyToObject;
   if (!requestBodyToObject.username || !requestBodyToObject.age || !requestBodyToObject.hobbies) {
-    showData(res, 400, {message: StatusCode.NO_REQUIRED_FIELDS});
+    showData(res, 400, showMessageWithStatus(StatusMessage.noRequiredFields));
   } else {
     const newUser = await createNewUser({ username, age, hobbies });
     showData(res, 201, newUser);
@@ -25,9 +25,9 @@ export const findUserById = async (req: IncomingMessage, res: ServerResponse, id
   if (userToFind){
     showData(res, 200, userToFind);
   } else if (!validate(id)) {
-    showData(res, 400, { message: StatusCode.USER_ID_INVALID });
+    showData(res, 400, showMessageWithStatus(StatusMessage.wrongId));
   } else {
-    showData(res, 404, { message: StatusCode.USER_DOESNOT_EXIST });
+    showData(res, 404, showMessageWithStatus(StatusMessage.noSuchUser));
   }
 };
 
@@ -37,9 +37,9 @@ export const deleteUserById = async (req: IncomingMessage, res: ServerResponse, 
     await deleteUser(id)
     showData(res, 204);
   } else if (!validate(id)) {
-    showData(res, 400, { message: StatusCode.USER_ID_INVALID });
+    showData(res, 400, showMessageWithStatus(StatusMessage.wrongId));
   } else {
-    showData(res, 404, { message: StatusCode.USER_DOESNOT_EXIST });
+    showData(res, 404, showMessageWithStatus(StatusMessage.noSuchUser));
   }
 };
 
@@ -56,8 +56,8 @@ export const updateUserById = async (req: IncomingMessage, res: ServerResponse, 
     const updatedUser = await updateUser(id, newUserOptions)
     showData(res, 200, updatedUser);
   } else if (!validate(id)) {
-    showData(res, 400, { message: StatusCode.USER_ID_INVALID });
+    showData(res, 400, showMessageWithStatus(StatusMessage.wrongId));
   } else {
-    showData(res, 404, { message: StatusCode.USER_DOESNOT_EXIST });
+    showData(res, 404, showMessageWithStatus(StatusMessage.noSuchUser));
   }
 };

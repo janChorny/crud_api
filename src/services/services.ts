@@ -4,7 +4,7 @@ import { storage } from '../constants/constants';
 import { v4 } from 'uuid';
 import { IncomingMessage } from 'http';
 
-export const showData = (res: ServerResponse, status: number, message?: { message: string } | User[] | User) => {
+export const showData = (res: ServerResponse, status: number, message?: { statusCode?: number, message: string} | User[] | User) => {
   res.writeHead(status, { 'Content-Type': 'application/json' });
   if (!message) {
     res.end();

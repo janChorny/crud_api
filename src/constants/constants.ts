@@ -22,4 +22,25 @@ export const storage: Users = {
   ],
 }
 
+export enum StatusMessage {
+  wrongId,
+  noSuchUser,
+  noRequiredFields,
+}
+
+interface StatusMessageSpec {
+  statusCode: number,
+  message: string
+}
+
+export const showMessageWithStatus = (status: StatusMessage): StatusMessageSpec => {
+  switch (status) {
+    case StatusMessage.wrongId:
+      return { statusCode: 400, message: StatusCode.USER_ID_INVALID };
+    case StatusMessage.noSuchUser:
+      return { statusCode: 404, message: StatusCode.USER_DOESNOT_EXIST };
+    case StatusMessage.noRequiredFields:
+      return { statusCode: 400, message: StatusCode.NO_REQUIRED_FIELDS };
+  }
+}
 
