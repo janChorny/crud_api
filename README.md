@@ -4,6 +4,7 @@
 1. Clone this repository - git clone https://github.com/janChorny/crud_api.git
 2. Go to downloaded folder - cd crud_api
 3. Install dependencies - npm install'
+4. Rename .env.example to .env in the root directory
 
 ###Use either development or production mode:
 Development mode -  npm run start:dev

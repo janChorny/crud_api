@@ -36,7 +36,7 @@ export const showMessageWithStatus = (status: StatusCodeMessage): StatusCodeMess
     case StatusCodeMessage.errorOnServerSide:
       return { statusCode: 500, message: StatusCodeText.SERVER_ERROR };
     case StatusCodeMessage.wrongWay:
-      return { statusCode: 400, message: StatusCodeText.WRONG_WAY };
+      return { statusCode: 404, message: StatusCodeText.WRONG_WAY };
   }
 }
 
