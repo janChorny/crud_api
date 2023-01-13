@@ -8,3 +8,8 @@ export interface User {
 export interface Users {
   users: User[];
 };
+
+export interface StatusCodeMessageSpec {
+  statusCode: number,
+  message: string
+}
