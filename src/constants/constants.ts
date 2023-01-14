@@ -1,5 +1,5 @@
-import { StatusCodeMessageSpec, Users } from "../interfaces/interfaces";
-import 'dotenv/config';
+import { StatusCodeMessageSpec } from "../interfaces/interfaces";
+import "dotenv/config";
 
 export const USERS_ENDPOINT = '/api/users';
 
@@ -11,10 +11,6 @@ export enum StatusCodeText {
   NO_REQUIRED_FIELDS = 'Not all the required fields are filled.',
   SERVER_ERROR = 'Server error. Try again.',
   WRONG_WAY = `Wrong request. Use like 'http://localhost:4000/api/users/{userID}'`
-}
-
-export const storage: Users = {
-  users: [],
 }
 
 export enum StatusCodeMessage {
