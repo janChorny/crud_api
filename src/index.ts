@@ -1,3 +1,3 @@
-import { API } from "./api";
+import { runAPI } from "./api";
 
-const CRUD_API = new API().runAPI();
+runAPI()
