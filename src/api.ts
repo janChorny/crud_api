@@ -1,14 +1,16 @@
+import { Methods } from "./methods/methods";
 import { Controller } from "./controller/controller";
-import { Server } from "./server";
 import { Services } from "./services/services";
+import { Utils } from "./utils/utils";
 
 
 export class API {
-  
-  public async runAPI(){
+
+  public async runAPI() {
     const services = new Services();
-    const controller = new Controller(services);
-    const server = new Server(controller);
-    server.createNewServer();
+    const utils = new Utils()
+    const methods = new Methods(services, utils);
+    const controller = new Controller(methods, utils);
+    await controller.createNewServer();
   }
 }
