@@ -5,7 +5,8 @@
   "scripts": {
     "start:dev": "npx nodemon ./src/index.ts",
     "start:prod": "npx webpack && node ./dist/bundle.js",
-    "test": "jest"
+    "test": "jest",
+    "start:multi": "npx nodemon ./src/cluster/cluster.ts"
   },
   "repository": {
     "type": "git",
