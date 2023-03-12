@@ -50,4 +50,3 @@ npm test
         ]
     }
 5. DELETE 'http://localhost:4000/api/users/a2e2f307-9c5f-42d9-b9f2-ad2a78de4f56'
-
